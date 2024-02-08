@@ -46,7 +46,7 @@ body:
     id: terms
     attributes:
       label: Code of Conduct
-      description: この問題を提出することにより、あなたは私たちの[行動規範](https://example.com)に従うことに同意します。
+      description: この問題を提出することにより、あなたは私たちの[行動規範](https://github.com/CC-Circle/Janaihou/blob/main/CONTRIBUTING.md)に従うことに同意します。
       options:
         - label: 私はこのプロジェクトの行動規範に従うことに同意します。
           required: true
