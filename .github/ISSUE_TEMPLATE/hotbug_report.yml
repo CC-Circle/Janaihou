@@ -18,6 +18,14 @@ body:
     validations:
       required: false
   - type: textarea
+    id: working-branch
+    attributes:
+      label: ブランチ名
+      description: 作業ブランチ名は何ですか？
+      placeholder: ex. main
+    validations:
+      required: true
+  - type: textarea
     id: what-happened
     attributes:
       label: 何が起きましたか？
