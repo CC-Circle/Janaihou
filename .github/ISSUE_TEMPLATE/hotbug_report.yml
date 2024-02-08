@@ -17,7 +17,7 @@ body:
       placeholder: ex. email@example.com or Discord User Name
     validations:
       required: false
-  - type: textarea
+  - type: input
     id: working-branch
     attributes:
       label: ブランチ名
