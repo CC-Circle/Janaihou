@@ -1,5 +1,5 @@
 ## 課題
-- https://github.com/https://github.com/CC-Circle/Janaihou/pull/{番号を変える}
+- https://github.com/https://github.com/CC-Circle/Janaihou/issues/{番号を変える}
 
 ## 概要
 
