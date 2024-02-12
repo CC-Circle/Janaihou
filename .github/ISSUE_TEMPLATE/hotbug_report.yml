@@ -25,6 +25,12 @@ body:
       placeholder: ex. main
     validations:
       required: true
+  - type: input
+    id: working-scene
+    attributes:
+      label:　シーン名
+      description: 問題が発生したSceneは何ですか？
+      placeholder: ex. SampleScene
   - type: textarea
     id: what-happened
     attributes:
