@@ -31,6 +31,8 @@ body:
       label:　シーン名
       description: 問題が発生したSceneは何ですか？
       placeholder: ex. SampleScene
+    validations:
+      required: false
   - type: textarea
     id: what-happened
     attributes:
