@@ -14,7 +14,7 @@ body:
     attributes:
       label: Contact Details
       description: もっと情報が必要な場合、どのように連絡すればよいですか？
-      placeholder: ex. email or Discord User Name
+      placeholder: ex. email@example.com or Discord User Name
     validations:
       required: false
   - type: input
