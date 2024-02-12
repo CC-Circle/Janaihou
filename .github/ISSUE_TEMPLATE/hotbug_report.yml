@@ -43,7 +43,18 @@ body:
     validations:
       required: true
   - type: dropdown
-    id: browsers
+    id: unity-version
+    attributes:
+      label: どのUnity Editor Versionで問題が発生していますか？
+      multiple: true
+      options:
+        - 2022.3.19f1 (Apple Silicon)
+        - 2022.3.7f1 (Apple Silicon)
+        - 2021.3.35f1 (Apple Silicon)
+        - 2023.2.9f1 (Apple Silicon)
+        - other version
+  - type: dropdown
+    id: operating-system
     attributes:
       label: どのOSで問題が発生していますか？
       multiple: true
