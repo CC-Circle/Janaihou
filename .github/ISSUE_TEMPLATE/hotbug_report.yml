@@ -53,6 +53,8 @@ body:
         - 2021.3.35f1 (Apple Silicon)
         - 2023.2.9f1 (Apple Silicon)
         - other version
+    validations:
+      required: true
   - type: dropdown
     id: operating-system
     attributes:
@@ -63,6 +65,8 @@ body:
         - macOS Ventura
         - macOS Sonoma
         - Windows
+    validations:
+      required: true
   - type: textarea
     id: logs
     attributes:
