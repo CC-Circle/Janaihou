@@ -26,9 +26,9 @@ body:
     validations:
       required: true
   - type: input
-    id: working-scene
+    id: working-Scene
     attributes:
-      label:　シーン名
+      label: シーン名
       description: 問題が発生したSceneは何ですか？
       placeholder: ex. SampleScene
     validations:
