@@ -17,6 +17,8 @@ jobs:
         uses: game-ci/unity-builder@v4
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
           # 今回は WebGL ビルドを行いたいため WebGL を指定する
           # WebGL 以外の指定可能な値は下記に記載の値が利用可能
