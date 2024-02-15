@@ -29,7 +29,7 @@ jobs:
           projectPath: .
           # テストの実行結果もみたい場合は githubToken を指定する
           # secrets.GITHUB_TOKEN は Secrets 未登録でも利用可能
-          githubToken: ${{ secrets.GITHUB_TOKEN }}
+          githubToken: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
 
           # Unity プロジェクトのバージョンを指定する
           # ProjectSettings/ProjectVersion.txt に記載されているバージョンを入力すれば OK
