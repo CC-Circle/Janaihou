@@ -19,7 +19,13 @@ jobs:
           key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
           restore-keys: |
             Library-
-
+      
+      # Free up disk space
+      - name: Free Disk Space
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: false
+          
       # GameCI の Builder を利用して、
       # Unity プロジェクトのビルドを実行する
       - name: Run the WebGL build
