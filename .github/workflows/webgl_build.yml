@@ -11,6 +11,14 @@ jobs:
       - name: Check out my unity project.
         uses: actions/checkout@v4
 
+      #Cache
+      - uses: actions/cache@v3
+        with:
+          path: Library
+          key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
+          restore-keys: |
+            Library-
+
       # GameCI の Builder を利用して、
       # Unity プロジェクトのビルドを実行する
       - name: Run the WebGL build
