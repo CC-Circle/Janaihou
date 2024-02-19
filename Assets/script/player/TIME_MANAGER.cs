@@ -44,7 +44,7 @@ public class TIME_MANAGER : MonoBehaviour
         if (is_revtime == true)
         {
             debug_slider.value -= Time.deltaTime;
-            Debug.Log($"時間は逆行 is_revtime = {is_revtime}");
+            //Debug.Log($"時間は逆行 is_revtime = {is_revtime}");
             if (debug_slider.value <= 0 && Force_change == true)
             {
                 is_revtime = false;
@@ -53,7 +53,7 @@ public class TIME_MANAGER : MonoBehaviour
         }
         if (is_revtime == false)
         {
-            Debug.Log($"時間は通常 is_revtime = {is_revtime}");
+            //Debug.Log($"時間は通常 is_revtime = {is_revtime}");
             
         }
 
