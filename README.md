@@ -3,11 +3,13 @@
 	- 特定のクラスの説明
 		- [TIME_MANAGER](#TIME_MANAGER)
 ## お知らせ
-2/8にこのプロジェクトのフォルダ構成の改善を行いました
-問題がある場合は
-- ```git reset --hard 058f038aa2373e02ff5e379d9eccfc9ecdc5cf0c```
-でフォルダ構造改変前の状態に戻すことができるので落ち着いて対処してください
-そしてdiscordにて連絡をください
+2/19
+このリポジトリのプロジェクトデータは大きいためクローンに失敗する可能性があります
+その際はターミナルに以下を打ち込んでクローンしてみてください
+- ```git clone --filter=blob:none https://github.com/CC-Circle/Janaihou.git```
+- でパーシャルクローンすることで fetch してくるデータサイズを小さくすることができます
+- 参考
+  - https://qiita.com/irgaly/items/0aace5cbd44aa4220733
 
 ## TIME_MANAGER
 ### このクラスでは時間の正進行と逆行を管理している
