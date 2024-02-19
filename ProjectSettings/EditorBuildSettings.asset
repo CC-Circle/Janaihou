@@ -5,7 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Takumi.unity
     guid: 7f8b9a5cef454436bad5adf36d424268
   m_configObjects: {}
