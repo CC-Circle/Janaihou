@@ -2632,6 +2632,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SD_unitychan_humanoid
       objectReference: {fileID: 0}
+    - target: {fileID: 100264, guid: 13a16f60da4245c45a865b2136ba272c, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 400264, guid: 13a16f60da4245c45a865b2136ba272c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 26.2
@@ -11238,6 +11242,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1600153452}
+  - component: {fileID: 1600153453}
   m_Layer: 0
   m_Name: FallHit
   m_TagString: Untagged
@@ -11263,6 +11268,19 @@ Transform:
   - {fileID: 1824892496}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1600153453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1600153451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be5b5eed537d24ea2aaa868fbc34de6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 1675125916}
 --- !u!1 &1626721399
 GameObject:
   m_ObjectHideFlags: 0
