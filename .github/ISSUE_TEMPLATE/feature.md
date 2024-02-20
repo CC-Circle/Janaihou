@@ -21,17 +21,6 @@ assignees: ""
 
 ## 詳細タスク
 
-```[tasklist]
-### 作業ブランチを切って、Publish branch
-- [x] 
-```
-
-```[tasklist]
-### 実装
-- [ ]
-```
-
-```[tasklist]
-### PRの作成
-- [ ]
-```
+- [ ] 作業ブランチを切って、Publish branch
+- [ ] 実装
+- [ ] PRの作成
