@@ -27,7 +27,7 @@ public class instance_rock : MonoBehaviour
 
     void insta_rock()
     {
-        if (timecont.is_rev_time == false)
+        if (TIME_MANAGER.is_revtime == false)
         {
             Instantiate(rock, point_top.transform.position, Quaternion.identity);
 

@@ -32,7 +32,7 @@ public class rock_move : MonoBehaviour
         if (other.CompareTag("Slope"))
         {
 
-            if (timecont.is_rev_time == false)
+            if (TIME_MANAGER.is_revtime == false)
             {
                 rb.velocity = normal_slope;
             }
@@ -47,13 +47,13 @@ public class rock_move : MonoBehaviour
         if (other.CompareTag("vertical"))
         {
             //Debug.Log("vertical");
-            if (timecont.is_rev_time == true)
+            if (TIME_MANAGER.is_revtime == true)
             {
                 //rb.velocity = new Vector3(0, 3.0f, 0);
                 this.gameObject.GetComponent<Rigidbody>().velocity = rev_time_fall;
                 Debug.Log("vertical rev time");
             }
-            else if (timecont.is_rev_time == false)
+            else if (TIME_MANAGER.is_revtime == false)
             {
                 this.gameObject.GetComponent<Rigidbody>().velocity = normal_fall;
 
@@ -67,7 +67,7 @@ public class rock_move : MonoBehaviour
         if (other.CompareTag("cliff"))
         {
             //Debug.Log("cliff");
-            if (timecont.is_rev_time == false)
+            if (TIME_MANAGER.is_revtime == false)
             {
                 rb.velocity = normal_cliff;
             }

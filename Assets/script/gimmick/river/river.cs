@@ -15,7 +15,7 @@ public class river : MonoBehaviour
     {
         if (col.tag == "Player")
         {
-            if (times == true)
+            if (TIME_MANAGER.is_revtime == false)
             {
                 //Rigidbody rb = this.transform.GetComponent<Rigidbody> ();
                 Rigidbody rb = col.transform.GetComponent<Rigidbody>();
