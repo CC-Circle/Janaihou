@@ -81,7 +81,7 @@ public class rock_move : MonoBehaviour
 
         if (other.CompareTag("flat"))
         {
-            Debug.Log("ok");
+            //Debug.Log("ok");
             if (TIME_MANAGER.is_revtime == false)
             {
                 rb.velocity = normal_flat;
