@@ -1272,6 +1272,7 @@ MonoBehaviour:
   debug_slider: {fileID: 761283539}
   max_clock: 20
   Force_change: 0
+  decreasing_gage: 1
 --- !u!4 &365932425
 Transform:
   m_ObjectHideFlags: 0
@@ -24333,7 +24334,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 3, y: 2, z: 3.5}
+  m_Size: {x: 3, y: 2, z: 4}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!64 &1963248019
 MeshCollider:
@@ -24661,7 +24662,7 @@ Transform:
   m_GameObject: {fileID: 1963248015}
   serializedVersion: 2
   m_LocalRotation: {x: 1.110223e-17, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 17.97, y: 2.44, z: 22.78}
+  m_LocalPosition: {x: 17.97, y: 2.44, z: 22.662}
   m_LocalScale: {x: 1, y: 1, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
