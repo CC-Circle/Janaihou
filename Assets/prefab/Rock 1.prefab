@@ -152,3 +152,5 @@ MonoBehaviour:
   rev_time_slope: {x: 3, y: -1.8, z: 0}
   normal_cliff: {x: -2, y: -2, z: 0}
   rev_time_cliff: {x: 3, y: 2, z: 0}
+  rev_time_flat: {x: 2.5, y: -1, z: 0}
+  normal_flat: {x: -1.5, y: 0, z: 0}
