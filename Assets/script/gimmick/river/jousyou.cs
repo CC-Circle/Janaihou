@@ -44,12 +44,14 @@ public class Jousyou : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*
         if(Input.GetKeyDown(KeyCode.Space)) {
             if (times == true){
                 times = false;
                 } else times = true;
             Debug.Log(times);
         }
+        */
     }
 
     // void FixedUpdate () {

@@ -14,6 +14,7 @@ public class TIME_MANAGER : MonoBehaviour
     public int max_clock = 20;
 
     public bool Force_change = false;
+    public bool decreasing_gage = true;
 
     // Start is called before the first frame update
     void Start()
@@ -41,7 +42,10 @@ public class TIME_MANAGER : MonoBehaviour
         
         if (is_revtime == true)
         {
-            debug_slider.value -= Time.deltaTime;
+            if (decreasing_gage == true)
+            {
+                debug_slider.value -= Time.deltaTime;
+            }
             
             if (debug_slider.value <= 0 && Force_change == true)
             {

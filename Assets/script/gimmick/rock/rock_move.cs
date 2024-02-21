@@ -12,8 +12,7 @@ public class rock_move : MonoBehaviour
     public Vector3 normal_cliff = new Vector3(-2f, -2.0f, 0);
     public Vector3 rev_time_cliff = new Vector3(3f, 2.0f, 0);
 
-    //public FallSenser fallsensor;
-
+   
     // Start is called before the first frame update
     void Start()
     {
@@ -51,7 +50,7 @@ public class rock_move : MonoBehaviour
             {
                 //rb.velocity = new Vector3(0, 3.0f, 0);
                 this.gameObject.GetComponent<Rigidbody>().velocity = rev_time_fall;
-                Debug.Log("vertical rev time");
+                
             }
             else if (TIME_MANAGER.is_revtime == false)
             {
@@ -92,7 +91,7 @@ public class rock_move : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player")
         {
-            Debug.Log("hit");
+            
             collision.transform.position = FallSenser.respone_vector;
         }
     }

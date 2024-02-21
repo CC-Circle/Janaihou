@@ -17,18 +17,18 @@ public class river : MonoBehaviour
         {
             if (TIME_MANAGER.is_revtime == false)
             {
-                //Rigidbody rb = this.transform.GetComponent<Rigidbody> ();
+                
                 Rigidbody rb = col.transform.GetComponent<Rigidbody>();
                 rb.AddForce(0, 0, true_walter_speed_z);
-                Debug.Log(col.name);
-                Debug.Log(col.tag);
+                //Debug.Log(col.name);
+                //Debug.Log(col.tag);
             }
             else
             {
                 Rigidbody rb = col.transform.GetComponent<Rigidbody>();
                 rb.AddForce(0, 0, false_walter_speed_z);
-                Debug.Log(col.name);
-                Debug.Log(col.tag);
+                //Debug.Log(col.name);
+                //Debug.Log(col.tag);
             }
         }
 
@@ -44,7 +44,7 @@ public class river : MonoBehaviour
                 times = false;
             }
             else times = true;
-            Debug.Log(times);
+            //Debug.Log(times);
         }
     }
 }
