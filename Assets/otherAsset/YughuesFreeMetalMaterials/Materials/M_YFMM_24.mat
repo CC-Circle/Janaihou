@@ -22,7 +22,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: M_YFMM_24
   m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
-  m_Parent: {fileID: 2100000, guid: 66bb025986bd66c479f0fe7e007798b0, type: 2}
+  m_Parent: {fileID: 2100000, guid: 6bded294da3a9cf47bdb6b9259f86b49, type: 2}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - _METALLICSPECGLOSSMAP
