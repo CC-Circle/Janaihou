@@ -23,12 +23,7 @@ public class turn_clock : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            //Instantiate(effect);
-            //effect.GetComponent<ParticleSystem>().Play();
-            //effect_ui.GetComponent<ParticleSystem>().Play();
-        }
+        
     }
 
     private void OnTriggerEnter(Collider other)
@@ -42,18 +37,9 @@ public class turn_clock : MonoBehaviour
                 time_manager.debug_slider.value++;
                 time_manager.current_clock_value = time_manager.max_clock / 8 * time_manager.debug_slider.value;
                 Instantiate(effect,other.gameObject.transform.position,Quaternion.identity);
-                //Instantiate(effect, effect_ui.transform.position,);
-                //effect.GetComponent<ParticleSystem>().Play();
                 effect_ui.GetComponent<ParticleSystem>().Play();
             }
         }
     }
 
-    public void clock_ripop()
-    {
-        if (gameObject.GetComponent<BoxCollider>().enabled == false)
-        {
-            Debug.Log("not_repop");
-        }
-    }
 }
