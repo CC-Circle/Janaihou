@@ -11,23 +11,29 @@ public class Conveyor : MonoBehaviour
 
     void Start()
     {
-        conveyor_direction = conveyor.transform.position;
+        // コンベアの方向ベクトルを取得
+        conveyor_direction = conveyor.transform.forward;
     }
 
     void OnTriggerStay(Collider col)
     {
         if (col.tag == "Player")
         {
-            if (TIME_MANAGER.is_revtime == false)
+            Rigidbody rb = col.transform.GetComponent<Rigidbody>();
+
+            // 逆再生中の場合、速度を反転
+            float speed;
+            if (TIME_MANAGER.is_revtime)
             {
-                Rigidbody rb = col.transform.GetComponent<Rigidbody>();
-                rb.AddForce(0, 0, true_conveyor_speed);
+                speed = false_conveyor_speed;
             }
             else
             {
-                Rigidbody rb = col.transform.GetComponent<Rigidbody>();
-                rb.AddForce(0, 0, false_conveyor_speed);
+                speed = true_conveyor_speed;
             }
+
+            // コンベアの方向に速度をかける
+            rb.AddForce(conveyor_direction * speed);
         }
     }
 }
