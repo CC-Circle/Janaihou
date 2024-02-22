@@ -18,8 +18,14 @@ public class ex_TIME_MANAGER : Editor
         GUIStyle style = new GUIStyle(GUI.skin.label);
         style.normal.textColor = Color.green;
         GUILayout.Label("パラメータの説明 ",style);
-        GUILayout.Label("Max_clockの値が大きいことに比例して\n " +
+        GUILayout.Label("Max_clock この値が大きいことに比例して\n " +
             "ゲージ一本が減る時間も長くなります ちょうど良い値に調整して下さい");
+        GUILayout.Label("Respone_clock_value この値の数がリスポーン時の\n " +
+            "ゲージの本数です　適宜調整");
+        GUILayout.Label("after_extinguishing_time この値の数がタイマー再出現の時間間隔です\n " +
+            "\"after_extinguishing_time\"秒後に取得後の回復タイマーが出現します");
+
+        
     }
 }
 #endif
