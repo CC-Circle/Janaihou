@@ -7,6 +7,9 @@ public class FallSenser : MonoBehaviour
     //落下判定をするオブジェクト
     public static Vector3 respone_vector;
     public GameObject Player;
+
+    public GameObject clock_items;
+    
     void Start()
     {
         
@@ -22,6 +25,10 @@ public class FallSenser : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             Player.transform.position = respone_vector;
+
+            clock_items.transform.position = new Vector3(clock_items.transform.position.x, clock_items.transform.position.y - 10, clock_items.transform.position.z);
+            
+            
         }
         else
         {
