@@ -9,6 +9,9 @@ public class turn_clock : MonoBehaviour
     public bool enable_repop = true;
     public bool enable_revial = true;
 
+    public GameObject effect;
+    public GameObject effect_ui;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +23,12 @@ public class turn_clock : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            //Instantiate(effect);
+            //effect.GetComponent<ParticleSystem>().Play();
+            //effect_ui.GetComponent<ParticleSystem>().Play();
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -33,6 +41,10 @@ public class turn_clock : MonoBehaviour
             {
                 time_manager.debug_slider.value++;
                 time_manager.current_clock_value = time_manager.max_clock / 8 * time_manager.debug_slider.value;
+                Instantiate(effect,other.gameObject.transform.position,Quaternion.identity);
+                //Instantiate(effect, effect_ui.transform.position,);
+                //effect.GetComponent<ParticleSystem>().Play();
+                effect_ui.GetComponent<ParticleSystem>().Play();
             }
         }
     }
