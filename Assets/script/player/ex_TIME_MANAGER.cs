@@ -1,8 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
 
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
+#if UNITY_EDITOR
 [CustomEditor(typeof(TIME_MANAGER))]
 public class ex_TIME_MANAGER : Editor
 {
@@ -18,3 +22,4 @@ public class ex_TIME_MANAGER : Editor
             "ゲージ一本が減る時間も長くなります ちょうど良い値に調整して下さい");
     }
 }
+#endif
