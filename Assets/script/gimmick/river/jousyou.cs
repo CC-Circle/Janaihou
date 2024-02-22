@@ -12,13 +12,13 @@ public class Jousyou : MonoBehaviour
 
     void OnTriggerStay(Collider col){
         if(col.tag == "Player"){
-            if (times == false) {
+            if (TIME_MANAGER.is_revtime == true) {
                 //Rigidbody rb = this.transform.GetComponent<Rigidbody> ();
-                Rigidbody rb = col.transform.GetComponent<Rigidbody> ();
+                Rigidbody rb = col.GetComponent<Rigidbody> ();
                 rb.velocity = new Vector3(0, walter_speed_y, 0);
                 //if()
-                Debug.Log(col.name);
-                Debug.Log(col.tag);
+                //Debug.Log(col.name);
+                //Debug.Log(col.tag);
             }
         }
         //}
@@ -44,12 +44,14 @@ public class Jousyou : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*
         if(Input.GetKeyDown(KeyCode.Space)) {
             if (times == true){
                 times = false;
                 } else times = true;
             Debug.Log(times);
         }
+        */
     }
 
     // void FixedUpdate () {

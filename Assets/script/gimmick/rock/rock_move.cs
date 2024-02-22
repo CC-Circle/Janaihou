@@ -6,14 +6,22 @@ public class rock_move : MonoBehaviour
 {
     Rigidbody rb;
     public Vector3 normal_fall = new Vector3(-2f, -3.0f, 0);
+
     public Vector3 rev_time_fall = new Vector3(2f, 3.0f, 0);
+
     public Vector3 normal_slope = new Vector3(-1.0f, -1.8f, 0);
+
     public Vector3 rev_time_slope =  new Vector3(3.0f, -1.8f, 0);
+
     public Vector3 normal_cliff = new Vector3(-2f, -2.0f, 0);
+
     public Vector3 rev_time_cliff = new Vector3(3f, 2.0f, 0);
 
-    //public FallSenser fallsensor;
+    public Vector3 rev_time_flat = new Vector3(1f, 0, 0);
 
+    public Vector3 normal_flat = new Vector3(-1f, 0, 0);
+
+   
     // Start is called before the first frame update
     void Start()
     {
@@ -32,7 +40,7 @@ public class rock_move : MonoBehaviour
         if (other.CompareTag("Slope"))
         {
 
-            if (timecont.is_rev_time == false)
+            if (TIME_MANAGER.is_revtime == false)
             {
                 rb.velocity = normal_slope;
             }
@@ -47,19 +55,13 @@ public class rock_move : MonoBehaviour
         if (other.CompareTag("vertical"))
         {
             //Debug.Log("vertical");
-            if (timecont.is_rev_time == true)
+            if (TIME_MANAGER.is_revtime == true)
             {
-                //rb.velocity = new Vector3(0, 3.0f, 0);
                 this.gameObject.GetComponent<Rigidbody>().velocity = rev_time_fall;
-                Debug.Log("vertical rev time");
             }
-            else if (timecont.is_rev_time == false)
+            else if (TIME_MANAGER.is_revtime == false)
             {
                 this.gameObject.GetComponent<Rigidbody>().velocity = normal_fall;
-
-                //Debug.Log($"vertical normal time {rb.velocity}");
-
-
             }
 
         }
@@ -67,13 +69,26 @@ public class rock_move : MonoBehaviour
         if (other.CompareTag("cliff"))
         {
             //Debug.Log("cliff");
-            if (timecont.is_rev_time == false)
+            if (TIME_MANAGER.is_revtime == false)
             {
                 rb.velocity = normal_cliff;
             }
             else
             {
                 rb.velocity = rev_time_cliff;
+            }
+        }
+
+        if (other.CompareTag("flat"))
+        {
+            //Debug.Log("ok");
+            if (TIME_MANAGER.is_revtime == false)
+            {
+                rb.velocity = normal_flat;
+            }
+            else
+            {
+                rb.velocity = rev_time_flat;
             }
         }
 
@@ -92,7 +107,7 @@ public class rock_move : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player")
         {
-            Debug.Log("hit");
+            
             collision.transform.position = FallSenser.respone_vector;
         }
     }

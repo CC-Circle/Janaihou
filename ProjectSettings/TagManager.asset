@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - rock
+  - vertical
+  - Slope
+  - cliff
+  - dest
+  - flat
   layers:
   - Default
   - TransparentFX
