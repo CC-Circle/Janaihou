@@ -20,8 +20,14 @@ public class Conveyor_Scroll : MonoBehaviour
     {
         // オブジェクトの forward 方向に合わせて移動量を計算
         Vector3 forwardDirection = transform.forward;
-        m_offset += new Vector2(forwardDirection.x, forwardDirection.z) * m_speed * Time.deltaTime;
-
+        if (TIME_MANAGER.is_revtime)
+        {
+            m_offset += new Vector2(forwardDirection.x, forwardDirection.z) * m_speed * Time.deltaTime;
+        }
+        else
+        {
+            m_offset -= new Vector2(forwardDirection.x, forwardDirection.z) * m_speed * Time.deltaTime;
+        }
         // マテリアルに offset をセット
         m_renderer.material.mainTextureOffset = m_offset;
     }
