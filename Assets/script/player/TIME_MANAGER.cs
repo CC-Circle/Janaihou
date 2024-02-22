@@ -8,7 +8,7 @@ using UnityEngine.UI;
 //このクラスの is_revtime 変数は 頻繁に他のクラスから参照されます　ki43IIIより
 public class TIME_MANAGER : MonoBehaviour
 {
-
+    public FallSenser fallSenser;
     public static bool is_revtime = false;
 
     public Slider debug_slider;
@@ -20,8 +20,10 @@ public class TIME_MANAGER : MonoBehaviour
     public bool Force_change = false;
     public bool decreasing_gage = true;
 
+    public float after_extinguishing_time = 10f;
 
-    
+    bool is_revial_flag = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -85,6 +87,19 @@ public class TIME_MANAGER : MonoBehaviour
                 else if ((max_clock / 8) * 1 < current_clock_value)
                 {
                     debug_slider.value = 1;
+
+                }
+                else if(is_revial_flag == false)
+                {
+                    is_revial_flag = true;
+                    debug_slider.value = 0;
+                    StartCoroutine(DelayCoroutine(after_extinguishing_time, () =>
+                    {
+                        // n秒後にここの処理が実行される
+                        fallSenser.revival_clock();
+                        is_revial_flag = false;
+
+                    }));
                 }
                 else
                 {
@@ -110,5 +125,13 @@ public class TIME_MANAGER : MonoBehaviour
             current_clock_value = max_clock / 8 * respone_clock_value;
             debug_slider.value = respone_clock_value;
         }
+    }
+
+
+    //遅延子ルーチン用
+    private IEnumerator DelayCoroutine(float seconds, Action action)
+    {
+        yield return new WaitForSeconds(seconds);
+        action?.Invoke();
     }
 }

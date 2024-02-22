@@ -7,6 +7,7 @@ public class turn_clock : MonoBehaviour
 
     public TIME_MANAGER time_manager;
     public bool enable_repop = true;
+    public bool enable_revial = true;
 
     // Start is called before the first frame update
     void Start()

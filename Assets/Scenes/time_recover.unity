@@ -1487,11 +1487,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c66abd1c3be504ee58615420a11e032c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fallSenser: {fileID: 1824892494}
   debug_slider: {fileID: 1443784106}
   max_clock: 10
   respone_clock_value: 6
+  current_clock_value: 0
   Force_change: 0
   decreasing_gage: 1
+  after_extinguishing_time: 10
 --- !u!4 &365932425
 Transform:
   m_ObjectHideFlags: 0
@@ -4576,6 +4579,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   time_manager: {fileID: 365932424}
   enable_repop: 1
+  enable_revial: 1
 --- !u!65 &928425683
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -21295,6 +21299,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   time_manager: {fileID: 365932424}
   enable_repop: 1
+  enable_revial: 1
 --- !u!4 &1370157652 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 6d58037af810b4021ac921a71033e575, type: 3}
@@ -23192,6 +23197,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   time_manager: {fileID: 365932424}
   enable_repop: 1
+  enable_revial: 1
 --- !u!65 &1523024092
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -23280,7 +23286,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1600153452}
-  - component: {fileID: 1600153453}
   m_Layer: 0
   m_Name: FallHit
   m_TagString: Untagged
@@ -23306,21 +23311,6 @@ Transform:
   - {fileID: 1824892496}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1600153453
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1600153451}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be5b5eed537d24ea2aaa868fbc34de6b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Player: {fileID: 1675125916}
-  clock_items: []
-  time_manager: {fileID: 0}
 --- !u!1 &1626721399
 GameObject:
   m_ObjectHideFlags: 0
@@ -25597,6 +25587,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   time_manager: {fileID: 365932424}
   enable_repop: 1
+  enable_revial: 1
 --- !u!65 &2132945089
 BoxCollider:
   m_ObjectHideFlags: 0

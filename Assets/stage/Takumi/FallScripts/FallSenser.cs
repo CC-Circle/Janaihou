@@ -33,9 +33,7 @@ public class FallSenser : MonoBehaviour
                     item.transform.position = new Vector3(item.transform.position.x, item.transform.position.y - 10, item.transform.position.z);
                 }
             }
-
             time_manager.set_Respone_gage();
-            
             
         }
         else
@@ -44,5 +42,16 @@ public class FallSenser : MonoBehaviour
         }
     }
 
-    
+    public void revival_clock()
+    {
+        foreach (var item in clock_items)
+        {
+            if (item.transform.position.y > 9 && item.GetComponent<turn_clock>().enable_revial == true)
+            {
+                item.transform.position = new Vector3(item.transform.position.x, item.transform.position.y - 10, item.transform.position.z);
+            }
+        }
+    }
+
+
 }
