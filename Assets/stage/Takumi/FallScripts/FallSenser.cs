@@ -7,8 +7,8 @@ public class FallSenser : MonoBehaviour
     //落下判定をするオブジェクト
     public static Vector3 respone_vector;
     public GameObject Player;
-
-    public GameObject clock_items;
+    public List<GameObject> clock_items;
+    public TIME_MANAGER time_manager;
     
     void Start()
     {
@@ -26,7 +26,15 @@ public class FallSenser : MonoBehaviour
         {
             Player.transform.position = respone_vector;
 
-            clock_items.transform.position = new Vector3(clock_items.transform.position.x, clock_items.transform.position.y - 10, clock_items.transform.position.z);
+            foreach (var item in clock_items)
+            {
+                if (item.transform.position.y > 9 && item.GetComponent<turn_clock>().enable_repop == true)
+                {
+                    item.transform.position = new Vector3(item.transform.position.x, item.transform.position.y - 10, item.transform.position.z);
+                }
+            }
+
+            time_manager.set_Respone_gage();
             
             
         }

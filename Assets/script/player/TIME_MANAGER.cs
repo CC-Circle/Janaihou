@@ -14,10 +14,12 @@ public class TIME_MANAGER : MonoBehaviour
     public Slider debug_slider;
 
     public int max_clock = 20;
-    float current_clock_value;
+    public int respone_clock_value = 4;
+    public float current_clock_value;
 
     public bool Force_change = false;
     public bool decreasing_gage = true;
+
 
     
     // Start is called before the first frame update
@@ -99,5 +101,14 @@ public class TIME_MANAGER : MonoBehaviour
         }
         
 
+    }
+
+    public void set_Respone_gage()
+    {
+        if (debug_slider.value <= respone_clock_value)
+        {
+            current_clock_value = max_clock / 8 * respone_clock_value;
+            debug_slider.value = respone_clock_value;
+        }
     }
 }

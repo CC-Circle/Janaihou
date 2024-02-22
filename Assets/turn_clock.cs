@@ -6,7 +6,7 @@ public class turn_clock : MonoBehaviour
 {
 
     public TIME_MANAGER time_manager;
-    
+    public bool enable_repop = true;
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +31,7 @@ public class turn_clock : MonoBehaviour
             if (time_manager.debug_slider.value < 8)
             {
                 time_manager.debug_slider.value++;
+                time_manager.current_clock_value = time_manager.max_clock / 8 * time_manager.debug_slider.value;
             }
         }
     }
