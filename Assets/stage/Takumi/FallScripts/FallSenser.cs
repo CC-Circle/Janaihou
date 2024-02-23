@@ -34,6 +34,10 @@ public class FallSenser : MonoBehaviour
                 }
             }
             time_manager.set_Respone_gage();
+            if(TIME_MANAGER.is_revtime == true)
+            {
+                TIME_MANAGER.is_revtime = false;
+            }
             
         }
         else
