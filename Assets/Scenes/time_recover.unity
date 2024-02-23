@@ -1570,9 +1570,10 @@ MonoBehaviour:
   max_clock: 10
   respone_clock_value: 6
   current_clock_value: 0
-  Force_change: 0
+  Force_change: 1
   decreasing_gage: 1
   after_extinguishing_time: 10
+  after_nogage_respone: 12
 --- !u!4 &365932425
 Transform:
   m_ObjectHideFlags: 0

@@ -17,12 +17,14 @@ public class TIME_MANAGER : MonoBehaviour
     public int respone_clock_value = 4;
     public float current_clock_value;
 
-    public bool Force_change = false;
+    public bool Force_change = true;
     public bool decreasing_gage = true;
 
     public float after_extinguishing_time = 10f;
+    public float after_nogage_respone = 15f;
 
     bool is_revial_flag = false;
+    bool is_respone_flag = false;
 
     // Start is called before the first frame update
     void Start()
@@ -54,58 +56,6 @@ public class TIME_MANAGER : MonoBehaviour
             if (decreasing_gage == true)
             {
                 current_clock_value -= Time.deltaTime;
-
-                //そのうち短縮版のコードを書きます
-                if ((max_clock / 8) * 8 < current_clock_value)
-                {
-                    debug_slider.value = 8;
-                }
-                else if ((max_clock / 8) * 7 < current_clock_value)
-                {
-                    debug_slider.value = 7;
-                }
-                else if ((max_clock / 8) * 6 < current_clock_value)
-                {
-                    debug_slider.value = 6;
-                }
-                else if ((max_clock / 8) * 5 < current_clock_value)
-                {
-                    debug_slider.value = 5;
-                }
-                else if ((max_clock / 8) * 4 < current_clock_value)
-                {
-                    debug_slider.value = 4;
-                }
-                else if ((max_clock / 8) * 3 < current_clock_value)
-                {
-                    debug_slider.value = 3;
-                }
-                else if ((max_clock / 8) * 2 < current_clock_value)
-                {
-                    debug_slider.value = 2;
-                }
-                else if ((max_clock / 8) * 1 < current_clock_value)
-                {
-                    debug_slider.value = 1;
-
-                }
-                else if(is_revial_flag == false)
-                {
-                    is_revial_flag = true;
-                    debug_slider.value = 0;
-                    StartCoroutine(DelayCoroutine(after_extinguishing_time, () =>
-                    {
-                        // n秒後にここの処理が実行される
-                        fallSenser.revival_clock();
-                        is_revial_flag = false;
-
-                    }));
-                }
-                else
-                {
-                    debug_slider.value = 0;
-                }
-
             }
             
             if (debug_slider.value <= 0 && Force_change == true)
@@ -114,7 +64,70 @@ public class TIME_MANAGER : MonoBehaviour
             }
 
         }
-        
+
+        //そのうち短縮版のコードを書きます
+        if ((max_clock / 8) * 8 <= current_clock_value)
+        {
+            debug_slider.value = 8;
+        }
+        else if ((max_clock / 8) * 7 <= current_clock_value)
+        {
+            debug_slider.value = 7;
+        }
+        else if ((max_clock / 8) * 6 < current_clock_value)
+        {
+            debug_slider.value = 6;
+        }
+        else if ((max_clock / 8) * 5 < current_clock_value)
+        {
+            debug_slider.value = 5;
+        }
+        else if ((max_clock / 8) * 4 < current_clock_value)
+        {
+            debug_slider.value = 4;
+        }
+        else if ((max_clock / 8) * 3 < current_clock_value)
+        {
+            debug_slider.value = 3;
+        }
+        else if ((max_clock / 8) * 2 < current_clock_value)
+        {
+            debug_slider.value = 2;
+        }
+        else if ((max_clock / 8) * 1 < current_clock_value)
+        {
+            debug_slider.value = 1;
+
+        }
+        else if (is_revial_flag == false && is_respone_flag == false)//ゲージが０になるとき呼ばれる
+        {
+            is_revial_flag = true;
+            is_respone_flag = true;
+            debug_slider.value = 0;
+            StartCoroutine(DelayCoroutine(after_extinguishing_time, () =>
+            {
+                // n秒後にここの処理が実行される
+                fallSenser.revival_clock();
+                is_revial_flag = false;
+
+            }));
+
+            StartCoroutine(DelayCoroutine(after_nogage_respone, () =>
+            {
+                // n秒後にここの処理が実行される
+                
+
+                fallSenser.nogage_respone();
+                is_respone_flag = false;
+                //is_revial_flag = false;
+
+            }));
+        }
+        else
+        {
+            debug_slider.value = 0;
+        }
+
 
     }
 

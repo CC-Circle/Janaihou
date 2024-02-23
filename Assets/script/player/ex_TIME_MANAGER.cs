@@ -24,8 +24,10 @@ public class ex_TIME_MANAGER : Editor
             "ゲージの本数です　適宜調整");
         GUILayout.Label("after_extinguishing_time この値の数がタイマー再出現の時間間隔です\n " +
             "\"after_extinguishing_time\"秒後に取得後の回復タイマーが出現します");
+        GUILayout.Label("after_nogage_respone この値の数がゲージ枯渇後のリスポーン時間間隔です\n " +
+           "\"after_nogage_respone\"秒後にキャラクターが最新のリスポーン地点へ出現します");
 
-        
+
     }
 }
 #endif

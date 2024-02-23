@@ -57,5 +57,11 @@ public class FallSenser : MonoBehaviour
         }
     }
 
+    public void nogage_respone()
+    {
+        
+        Player.transform.position = respone_vector;
+        time_manager.set_Respone_gage();
+    }
 
 }
