@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    private GameObject parentObj;
     [SerializeField] float speed = 3; // Inspectorビューで変更可能
     Animator animator;
 
-    
+
 
     bool running; // フィールド
-    bool Runing { // プロパティ
+    bool Runing
+    { // プロパティ
         get { return running; }
-        set { // 値が異なるセット時のみanimator.SetBoolを呼ぶようにします
+        set
+        { // 値が異なるセット時のみanimator.SetBoolを呼ぶようにします
             if (value != running)
             {
                 running = value;
@@ -25,6 +28,8 @@ public class Player : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         cameraSource = GameObject.Find("Main Camera").GetComponent<Camera>();
+
+        parentObj = GameObject.Find("player_parent");
     }
     void Update()
     {
@@ -46,14 +51,26 @@ public class Player : MonoBehaviour
             // 前に移動する
             transform.Translate(Vector3.forward * Time.deltaTime * speed);
             Runing = true; // プロパティによるセット
-        } else
+        }
+        else
         {
             Runing = false; // プロパティによるセット
         }
     }
 
+    void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.name == "board")
+            transform.SetParent(parentObj.transform);
+    }
 
-   
+    void OnCollisionExit(Collision other)
+    {
+        if (other.gameObject.name == "board")
+            transform.SetParent(null);
+    }
 
-    
+
+
+
 }
