@@ -1565,15 +1565,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c66abd1c3be504ee58615420a11e032c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Enable_show_all_palam: 0
   fallSenser: {fileID: 1824892494}
   debug_slider: {fileID: 1443784106}
   max_clock: 10
-  respone_clock_value: 6
+  respone_clock_value: 4
   current_clock_value: 0
+  repop_item_get: 5
   Force_change: 1
   decreasing_gage: 1
-  after_extinguishing_time: 10
-  after_nogage_respone: 12
+  after_nogage_respone: 10
 --- !u!4 &365932425
 Transform:
   m_ObjectHideFlags: 0
@@ -25248,6 +25249,10 @@ PrefabInstance:
       propertyPath: time_manager
       value: 
       objectReference: {fileID: 365932424}
+    - target: {fileID: 5503430577952127386, guid: 93010651880da463b80283d55ad09c25, type: 3}
+      propertyPath: Enable_show_all_palam
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
