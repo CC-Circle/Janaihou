@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    private GameObject parentObj;
     [SerializeField] float speed = 3; // Inspectorビューで変更可能
     Animator animator;
 
@@ -28,8 +27,6 @@ public class Player : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         cameraSource = GameObject.Find("Main Camera").GetComponent<Camera>();
-
-        parentObj = GameObject.Find("player_parent");
     }
     void Update()
     {
@@ -57,20 +54,4 @@ public class Player : MonoBehaviour
             Runing = false; // プロパティによるセット
         }
     }
-
-    void OnCollisionEnter(Collision other)
-    {
-        if (other.gameObject.name == "board")
-            transform.SetParent(parentObj.transform);
-    }
-
-    void OnCollisionExit(Collision other)
-    {
-        if (other.gameObject.name == "board")
-            transform.SetParent(null);
-    }
-
-
-
-
 }
