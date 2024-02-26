@@ -1571,9 +1571,9 @@ MonoBehaviour:
   max_clock: 10
   respone_clock_value: 4
   current_clock_value: 0
-  repop_item_get: 5
+  repop_item_get: 1
   Force_change: 1
-  decreasing_gage: 0
+  decreasing_gage: 1
   after_nogage_respone: 10
 --- !u!4 &365932425
 Transform:
@@ -25219,7 +25219,11 @@ PrefabInstance:
       objectReference: {fileID: 365932424}
     - target: {fileID: 7924164770774144895, guid: 58b6f741c90d34c08ba5465d5b808d69, type: 3}
       propertyPath: enable_revial
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7924164770774144895, guid: 58b6f741c90d34c08ba5465d5b808d69, type: 3}
+      propertyPath: recover_value
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7924164770774144895, guid: 58b6f741c90d34c08ba5465d5b808d69, type: 3}
       propertyPath: Enable_show_all_palam

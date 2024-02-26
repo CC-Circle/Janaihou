@@ -76,23 +76,23 @@ public class TIME_MANAGER : MonoBehaviour
         {
             debug_slider.value = 7;
         }
-        else if ((max_clock / 8) * 6 < current_clock_value)
+        else if ((max_clock / 8) * 6 <= current_clock_value)
         {
             debug_slider.value = 6;
         }
-        else if ((max_clock / 8) * 5 < current_clock_value)
+        else if ((max_clock / 8) * 5 <= current_clock_value)
         {
             debug_slider.value = 5;
         }
-        else if ((max_clock / 8) * 4 < current_clock_value)
+        else if ((max_clock / 8) * 4 <= current_clock_value)
         {
             debug_slider.value = 4;
         }
-        else if ((max_clock / 8) * 3 < current_clock_value)
+        else if ((max_clock / 8) * 3 <= current_clock_value)
         {
             debug_slider.value = 3;
         }
-        else if ((max_clock / 8) * 2 < current_clock_value)
+        else if ((max_clock / 8) * 2 <= current_clock_value)
         {
             debug_slider.value = 2;
         }

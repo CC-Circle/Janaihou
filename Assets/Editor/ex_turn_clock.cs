@@ -36,13 +36,13 @@ public class ex_trun_clock : Editor
 
         
 
-        EditorGUILayout.LabelField("リスポーン時にリポップするか bool　enable_revial");
+        EditorGUILayout.LabelField("アイテムが取得されてから、一定時間の経過でリポップするか bool　enable_revial");
         EditorGUILayout.BeginHorizontal();
         trun_Clock.enable_revial = EditorGUILayout.Toggle(trun_Clock.enable_revial, GUILayout.Width(48));
         EditorGUILayout.EndHorizontal();
         _component.enable_revial = trun_Clock.enable_revial;
 
-        EditorGUILayout.LabelField("アイテムが取得されてから、一定時間の経過でリポップするか bool　enable_repop");
+        EditorGUILayout.LabelField("リスポーン時にリポップするか bool　enable_repop");
         EditorGUILayout.BeginHorizontal();
         trun_Clock.enable_repop = EditorGUILayout.Toggle(trun_Clock.enable_repop, GUILayout.Width(48));
         EditorGUILayout.EndHorizontal();
