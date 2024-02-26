@@ -7,12 +7,14 @@ public class Player : MonoBehaviour
     [SerializeField] float speed = 3; // Inspectorビューで変更可能
     Animator animator;
 
-    
+
 
     bool running; // フィールド
-    bool Runing { // プロパティ
+    bool Runing
+    { // プロパティ
         get { return running; }
-        set { // 値が異なるセット時のみanimator.SetBoolを呼ぶようにします
+        set
+        { // 値が異なるセット時のみanimator.SetBoolを呼ぶようにします
             if (value != running)
             {
                 running = value;
@@ -46,14 +48,10 @@ public class Player : MonoBehaviour
             // 前に移動する
             transform.Translate(Vector3.forward * Time.deltaTime * speed);
             Runing = true; // プロパティによるセット
-        } else
+        }
+        else
         {
             Runing = false; // プロパティによるセット
         }
     }
-
-
-   
-
-    
 }

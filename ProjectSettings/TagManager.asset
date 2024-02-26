@@ -10,6 +10,7 @@ TagManager:
   - cliff
   - dest
   - flat
+  - Paralell_moving_floor
   layers:
   - Default
   - TransparentFX
