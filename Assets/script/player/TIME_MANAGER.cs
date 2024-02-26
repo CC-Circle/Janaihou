@@ -8,18 +8,26 @@ using UnityEngine.UI;
 //このクラスの is_revtime 変数は 頻繁に他のクラスから参照されます　ki43IIIより
 public class TIME_MANAGER : MonoBehaviour
 {
-
+    public bool Enable_show_all_palam = false;
+    public FallSenser fallSenser;
     public static bool is_revtime = false;
 
     public Slider debug_slider;
 
-    public int max_clock = 20;
-    float current_clock_value;
+    public float max_clock = 20;
+    public int respone_clock_value = 4;
+    public float current_clock_value;
+    public float repop_item_get = 10;//アイテムを取得したあとそのアイテムが再出現する時間　キャラのリスポーンとは別
 
-    public bool Force_change = false;
+    public bool Force_change = true;
     public bool decreasing_gage = true;
 
-    
+    //public float after_extinguishing_time = 10f;
+    public float after_nogage_respone = 10f;
+
+    bool is_revial_flag = false;
+    bool is_respone_flag = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -50,45 +58,6 @@ public class TIME_MANAGER : MonoBehaviour
             if (decreasing_gage == true)
             {
                 current_clock_value -= Time.deltaTime;
-
-                //そのうち短縮版のコードを書きます
-                if ((max_clock / 8) * 8 < current_clock_value)
-                {
-                    debug_slider.value = 8;
-                }
-                else if ((max_clock / 8) * 7 < current_clock_value)
-                {
-                    debug_slider.value = 7;
-                }
-                else if ((max_clock / 8) * 6 < current_clock_value)
-                {
-                    debug_slider.value = 6;
-                }
-                else if ((max_clock / 8) * 5 < current_clock_value)
-                {
-                    debug_slider.value = 5;
-                }
-                else if ((max_clock / 8) * 4 < current_clock_value)
-                {
-                    debug_slider.value = 4;
-                }
-                else if ((max_clock / 8) * 3 < current_clock_value)
-                {
-                    debug_slider.value = 3;
-                }
-                else if ((max_clock / 8) * 2 < current_clock_value)
-                {
-                    debug_slider.value = 2;
-                }
-                else if ((max_clock / 8) * 1 < current_clock_value)
-                {
-                    debug_slider.value = 1;
-                }
-                else
-                {
-                    debug_slider.value = 0;
-                }
-
             }
             
             if (debug_slider.value <= 0 && Force_change == true)
@@ -97,7 +66,78 @@ public class TIME_MANAGER : MonoBehaviour
             }
 
         }
-        
 
+        //そのうち短縮版のコードを書きます
+        if ((max_clock / 8) * 8 <= current_clock_value)
+        {
+            debug_slider.value = 8;
+        }
+        else if ((max_clock / 8) * 7 <= current_clock_value)
+        {
+            debug_slider.value = 7;
+        }
+        else if ((max_clock / 8) * 6 <= current_clock_value)
+        {
+            debug_slider.value = 6;
+        }
+        else if ((max_clock / 8) * 5 <= current_clock_value)
+        {
+            debug_slider.value = 5;
+        }
+        else if ((max_clock / 8) * 4 <= current_clock_value)
+        {
+            debug_slider.value = 4;
+        }
+        else if ((max_clock / 8) * 3 <= current_clock_value)
+        {
+            debug_slider.value = 3;
+        }
+        else if ((max_clock / 8) * 2 <= current_clock_value)
+        {
+            debug_slider.value = 2;
+        }
+        else if ((max_clock / 8) * 1 < current_clock_value)
+        {
+            debug_slider.value = 1;
+
+        }
+        else if (is_respone_flag == false)//ゲージが０になるとき呼ばれる
+        {
+            
+            is_respone_flag = true;
+            StartCoroutine(DelayCoroutine(after_nogage_respone, () =>
+            {
+                // n秒後にここの処理が実行される
+                fallSenser.nogage_respone();
+                fallSenser.revival_clock();
+                is_respone_flag = false;
+                
+
+            }));
+        }
+        else
+        {
+            debug_slider.value = 0;
+        }
+
+
+    }
+
+    public void set_Respone_gage()
+    {
+        if (debug_slider.value <= respone_clock_value)
+        {
+            current_clock_value = max_clock / 8 * respone_clock_value + 1;
+            debug_slider.value = respone_clock_value;
+        }
+    }
+
+    
+
+    //遅延子ルーチン用
+    private IEnumerator DelayCoroutine(float seconds, Action action)
+    {
+        yield return new WaitForSeconds(seconds);
+        action?.Invoke();
     }
 }
