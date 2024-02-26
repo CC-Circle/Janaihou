@@ -4,16 +4,24 @@ using UnityEngine;
 
 #if UNITY_EDITOR
 using UnityEditor;
+using UnityEngine.SceneManagement;
+//using UnityEditor.SceneManagement;
 #endif
 
 #if UNITY_EDITOR
 [CustomEditor(typeof(TIME_MANAGER))]
 public class ex_TIME_MANAGER : Editor
 {
-    
+    private TIME_MANAGER _component;
+
+    private void OnEnable()
+    {
+        _component = target as TIME_MANAGER;
+    }
+
     public override void OnInspectorGUI()
     {
-
+        serializedObject.Update();
         EditorGUI.BeginChangeCheck();
         TIME_MANAGER time_manager = (TIME_MANAGER)target;
 
@@ -26,37 +34,46 @@ public class ex_TIME_MANAGER : Editor
             DrawDefaultInspector();
         }
 
-        // GUIの更新があったら実行
-        if (EditorGUI.EndChangeCheck())
-        {
-            EditorUtility.SetDirty(time_manager);
-        }
+        
 
         EditorGUILayout.LabelField("最大タイマーゲージタイム（flaot秒）max_clock");
         EditorGUILayout.BeginHorizontal();
         time_manager.max_clock = EditorGUILayout.FloatField(time_manager.max_clock, GUILayout.Width(48));
         EditorGUILayout.EndHorizontal();
+        _component.max_clock = time_manager.max_clock;
 
         EditorGUILayout.LabelField("リスポーンした時の逆転時計のゲージの最低値 (int本) respone_clock_value");
         EditorGUILayout.BeginHorizontal();
         time_manager.respone_clock_value = EditorGUILayout.IntField(time_manager.respone_clock_value, GUILayout.Width(48));
         EditorGUILayout.EndHorizontal();
+        _component.respone_clock_value = time_manager.respone_clock_value;
 
         EditorGUILayout.LabelField("ゲージ消費をするか bool decreasing_gage");
         EditorGUILayout.BeginHorizontal();
         time_manager.decreasing_gage = EditorGUILayout.Toggle(time_manager.decreasing_gage, GUILayout.Width(48));
         EditorGUILayout.EndHorizontal();
+        _component.decreasing_gage = time_manager.decreasing_gage;
 
         EditorGUILayout.LabelField("アイテムが取得されてから、アイテムがリポップするまでの時間 (float秒) repop_item_get");
         EditorGUILayout.BeginHorizontal();
         time_manager.repop_item_get = EditorGUILayout.FloatField(time_manager.repop_item_get, GUILayout.Width(48));
         EditorGUILayout.EndHorizontal();
+        _component.repop_item_get = time_manager.repop_item_get;
 
         EditorGUILayout.LabelField("逆転時計のゲージが枯渇した後に、プレイヤーがリスポーンするまでのタイム　(float秒) after_nogage_respone");
         EditorGUILayout.BeginHorizontal();
         time_manager.after_nogage_respone = EditorGUILayout.FloatField(time_manager.after_nogage_respone, GUILayout.Width(48));
         EditorGUILayout.EndHorizontal();
-        
+        _component.after_nogage_respone = time_manager.after_nogage_respone;
+
+        Undo.RecordObject(_component, "chenge_value");
+
+        // GUIの更新があったら実行
+        if (EditorGUI.EndChangeCheck())
+        {
+            
+            EditorUtility.SetDirty(time_manager);
+        }
 
         /*
         GUIStyle style = new GUIStyle(GUI.skin.label);
