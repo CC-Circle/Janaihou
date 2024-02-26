@@ -20,15 +20,26 @@ public class colli_naible_con : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space)){
+        if(TIME_MANAGER.is_revtime == true){
 
             if (SetNum == 0)
             {
-                collider.enabled = !collider.enabled;
+                collider.enabled = true;
             }
             if(SetNum == -1)
             {
-                collider.enabled = !collider.enabled;
+                collider.enabled = false;
+            }
+        }
+        else
+        {
+            if (SetNum == 0)
+            {
+                collider.enabled = false;
+            }
+            if (SetNum == -1)
+            {
+                collider.enabled = true;
             }
         }
     }
