@@ -22,9 +22,7 @@ public class Player_Triger : MonoBehaviour
 
     private void StartCoroutine()
     {
-        Debug.Log("StartCoroutine");
         StartCoroutine(down_Scaffolding.Down_board(gameObject.transform.parent.gameObject, time_up_to_fall));
-
     }
 
     void OnCollisionEnter(Collision other)
