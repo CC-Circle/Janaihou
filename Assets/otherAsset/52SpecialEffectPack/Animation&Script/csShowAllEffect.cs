@@ -5,7 +5,7 @@ public class csShowAllEffect : MonoBehaviour
 {
     public string[] EffectName;
     public Transform[] Effect;
-    public GUIText Text1;
+    //public GUIText Text1;
     public int i = 0;
 
     void Start()
@@ -15,8 +15,8 @@ public class csShowAllEffect : MonoBehaviour
 
     void Update ()
     {
-        Text1.text = i + 1 + ":" + EffectName[i];
-
+        //Text1.text = i + 1 + ":" + EffectName[i];
+        /*
         if (Input.GetKeyDown(KeyCode.Z))
         {
             if (i <= 0)
@@ -43,5 +43,6 @@ public class csShowAllEffect : MonoBehaviour
         { 
             Instantiate(Effect[i], new Vector3(0, 0, 0), Quaternion.identity);
         }
+        */
     }
 }
