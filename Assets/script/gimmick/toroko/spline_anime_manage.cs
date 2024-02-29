@@ -7,17 +7,28 @@ using System;
 public class spline_anime_manage : MonoBehaviour
 {
     [SerializeField] SplineAnimate splineAnimate;
-
+    Material mat;
+    Shader sha;
+    MeshRenderer mesh;
+    public Renderer rend;
+    
+    public float timeOut;
 
     float duration = 0;
     // Start is called before the first frame update
     void Start()
     {
+        mat = rend.material;
+        sha = mat.shader;
+        //mat.SetInt("",1);
+        
         duration = splineAnimate.Duration / 12;
         StartCoroutine(DelayCoroutine(0.01f, () =>
         {
             splineAnimate.ElapsedTime += duration;
         }));
+        
+
     }
 
     // Update is called once per frame
@@ -44,5 +55,19 @@ public class spline_anime_manage : MonoBehaviour
         action?.Invoke();
     }
 
+    //一定時間処理　似非マルチスレッド
+    IEnumerator FuncCoroutine()
+    {
+        while (true)
+        {
+            
+            
+            yield return new WaitForSeconds(timeOut);
+        }
+    }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        FuncCoroutine();
+    }
 }
