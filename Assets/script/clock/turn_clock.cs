@@ -22,7 +22,7 @@ public class turn_clock : MonoBehaviour
     {
         Rigidbody rb = GetComponent<Rigidbody>();
         rb.angularVelocity = new Vector3(0,2,0);
-        //parent = this.gameObject.transform;
+        
     }
 
     // Update is called once per frame
