@@ -32164,6 +32164,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 155592373}
+  clock_items: []
+  time_manager: {fileID: 0}
 --- !u!65 &1824892495
 BoxCollider:
   m_ObjectHideFlags: 0
