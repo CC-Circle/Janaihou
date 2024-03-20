@@ -6,6 +6,9 @@ public class river : MonoBehaviour
 {
     private GameObject gameobject;
     private GameObject SD_unitychan_humanoid;
+
+    public Cont_ripple_OnOff r_cont;
+
     public bool times = true;
 
     [SerializeField] private float true_walter_speed_z = 250;
@@ -33,6 +36,32 @@ public class river : MonoBehaviour
         }
 
     }
+
+    //ki43が追加した
+
+    /// <summary>
+    /// ki43: 水面表現有効化判定
+    /// 
+    /// </summary>
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            r_cont.ripple_start();
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            r_cont.ripple_stop();
+        }
+    }
+
+    //ki43が追加した
+
+
+
 
     // Update is called once per frame
     void Update()
