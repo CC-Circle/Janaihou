@@ -45,7 +45,7 @@ public class Cont_ripple_OnOff : MonoBehaviour
     {
         //effect.SendEvent("OnPlay");
         called_play_falg = true;
-        Debug.Log("called_play");
+        //Debug.Log("called_play");
     }
 
     /// <summary>
@@ -56,6 +56,6 @@ public class Cont_ripple_OnOff : MonoBehaviour
     {
         //effect.SendEvent("StopPlay");
         called_stop_falg = true;
-        Debug.Log("called_stop");
+        //Debug.Log("called_stop");
     }
 }
