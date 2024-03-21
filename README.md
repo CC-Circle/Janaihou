@@ -90,10 +90,5 @@ public bool Force_change = false;
 
 </details>
 
-# ステージ２の追加
-
-歯車のステージを作成中
-
-<img width="400" alt="スクリーンショット 2024-02-07 16 56 57" src="https://github.com/MMD-Lucky/zyanaihou/assets/136224249/0e018eab-4157-4ae0-a784-b509b2ef12bf">
 
 
