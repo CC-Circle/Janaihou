@@ -19,13 +19,14 @@ public class Door : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        key = keyobject.GetComponent<Key>();
-        if (key.Getkeylocal == true)
-        {
-            animain.SetBool("AnimaStart", true);
-            Key.Getkeyglobal = false;//全体の鍵取得情報を削除する
-            key.Open = true;//鍵の方を破壊する
-            //Destroy(this.gameObject);
+        if (keyobject!=null) {
+            key = keyobject.GetComponent<Key>();
+            if (key.Getkeylocal == true)
+            {
+                animain.SetBool("AnimaStart", true);
+                Key.Getkeyglobal = false;//全体の鍵取得情報を削除する
+                key.Open = true;//鍵の方を破壊する
+            }
         }
     }
     public void OnAnimationEnd()
