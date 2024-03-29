@@ -13,6 +13,8 @@ public class TIME_MANAGER : MonoBehaviour
     public static bool is_revtime = false;
 
     public Slider debug_slider;
+    //public int public_slider_value;
+
 
     public float max_clock = 20;
     public int respone_clock_value = 4;
@@ -39,10 +41,10 @@ public class TIME_MANAGER : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        //public_slider_value = debug_slider.value;
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (is_revtime==false && debug_slider.value > 0 )
+            if (is_revtime==false && debug_slider.value > 0.1 )
             {
                 is_revtime = true;
             }
@@ -60,7 +62,7 @@ public class TIME_MANAGER : MonoBehaviour
                 current_clock_value -= Time.deltaTime;
             }
             
-            if (debug_slider.value <= 0 && Force_change == true)
+            if (debug_slider.value <= 0.1 && Force_change == true)
             {
                 is_revtime = false;
             }
@@ -107,17 +109,17 @@ public class TIME_MANAGER : MonoBehaviour
             is_respone_flag = true;
             StartCoroutine(DelayCoroutine(after_nogage_respone, () =>
             {
-                // n秒後にここの処理が実行される
-                fallSenser.nogage_respone();
-                fallSenser.revival_clock();
                 is_respone_flag = false;
-                
-
+                // n秒後にここの処理が実行される
+                if (current_clock_value < max_clock / 8)
+                {
+                    fallSenser.nogage_respone();
+                    fallSenser.revival_clock();
+                }
             }));
-        }
-        else
+        }else if(is_respone_flag == true)
         {
-            debug_slider.value = 0;
+            debug_slider.value = 0.01f;
         }
 
 

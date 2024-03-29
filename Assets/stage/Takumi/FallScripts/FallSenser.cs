@@ -59,9 +59,13 @@ public class FallSenser : MonoBehaviour
 
     public void nogage_respone()
     {
-        
-        Player.transform.position = respone_vector;
-        time_manager.set_Respone_gage();
+        //Debug.Log(time_manager.current_clock_value);
+        //if (time_manager.current_clock_value < time_manager.max_clock/8)
+        //{
+            //Debug.Log(true);
+            Player.transform.position = respone_vector;
+            time_manager.set_Respone_gage();
+        //}
     }
 
 }
