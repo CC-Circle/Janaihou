@@ -16,7 +16,7 @@ public class Button_manage_ui : MonoBehaviour
     void Start()
     {
         stage_indication.text = "STAGE\nSELECT";
-        stage_preview.sprite = stage_preview_list[0];
+        stage_preview.sprite = stage_preview_list[5];
     }
 
     // Update is called once per frame
@@ -34,7 +34,14 @@ public class Button_manage_ui : MonoBehaviour
         string buttonName = clickedButton.name;
         //Debug.Log("Clicked button name: " + buttonName);
         current_pointer_obj.transform.position = clickedButton.transform.position;
-        stage_indication.text = $"STAGE{buttonName}";
-        stage_preview.sprite = stage_preview_list[int.Parse(buttonName)-1];
+        stage_indication.text = $"STAGE\n{buttonName}";
+        if (buttonName == "TUTORIAL")
+        {
+            stage_preview.sprite = stage_preview_list[5];
+        }
+        else
+        {
+            stage_preview.sprite = stage_preview_list[int.Parse(buttonName) - 1];
+        }
     }
 }
