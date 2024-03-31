@@ -22,6 +22,7 @@ public class FallSenser : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
+        /*
         if (collision.gameObject.tag == "Player")
         {
             Player.transform.position = respone_vector;
@@ -42,7 +43,30 @@ public class FallSenser : MonoBehaviour
         }
         else
         {
-            Destroy(collision.gameObject);
+            //Destroy(collision.gameObject);
+        }
+        */
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            Player.transform.position = respone_vector;
+
+            foreach (var item in clock_items)
+            {
+                if (item.transform.position.y > 9 && item.GetComponent<turn_clock>().enable_repop == true)
+                {
+                    item.transform.position = new Vector3(item.transform.position.x, item.transform.position.y - 10, item.transform.position.z);
+                }
+            }
+            time_manager.set_Respone_gage();
+            if (TIME_MANAGER.is_revtime == true)
+            {
+                TIME_MANAGER.is_revtime = false;
+            }
+
         }
     }
 
