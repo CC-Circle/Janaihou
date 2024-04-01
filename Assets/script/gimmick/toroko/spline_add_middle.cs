@@ -6,7 +6,7 @@ using System;
 using EventBridge;
 
 
-public class spline_anime_manage : MonoBehaviour
+public class spline_add_middle : MonoBehaviour
 {
     [SerializeField] SplineAnimate splineAnimate;
     public ParticleSystem effect;
@@ -16,9 +16,9 @@ public class spline_anime_manage : MonoBehaviour
     private IComponentEventHandler _eventHandler_end_point;
     [SerializeField] private GameObject toroko_obj;
     private IComponentEventHandler _eventHandler_toroko_obj;
-    //[SerializeField] private GameObject landingplace;
-    //private IComponentEventHandler _eventHandler_landingplace;
-    
+    [SerializeField] private GameObject middle_point;
+    private IComponentEventHandler _eventHandler_middle_point;
+    public GameObject landingplace_point;
 
     [SerializeField, Range(1.0f, 10.0f)]
     public float toroko_duration;
@@ -26,6 +26,9 @@ public class spline_anime_manage : MonoBehaviour
     public bool Set_middle_point = false;
     [SerializeField, Range(0.0f, 1.0f)]
     public float middle_point_volume = 0.5f;
+
+    
+    bool Onmiddle_point = false;
 
     public enum Awake_Toroko_point
     {
@@ -58,27 +61,27 @@ public class spline_anime_manage : MonoBehaviour
         //トロッコ初期位置セット
 
         duration = splineAnimate.Duration / 12;
-        
-            StartCoroutine(DelayCoroutine(0.01f, () =>
+
+        StartCoroutine(DelayCoroutine(0.01f, () =>
+        {
+            if (awake_point == Awake_Toroko_point.Start)
             {
-                if (awake_point == Awake_Toroko_point.Start)
+                splineAnimate.ElapsedTime += duration;
+                if (Set_middle_point == true)
                 {
-                    splineAnimate.ElapsedTime += duration;
-                    if (Set_middle_point == true)
-                    {
-                        splineAnimate.ElapsedTime = -splineAnimate.ElapsedTime + toroko_duration * middle_point_volume;
-                    }
+                    splineAnimate.ElapsedTime = -splineAnimate.ElapsedTime + toroko_duration * middle_point_volume;
                 }
-                if (awake_point == Awake_Toroko_point.End)
+            }
+            if (awake_point == Awake_Toroko_point.End)
+            {
+                splineAnimate.ElapsedTime = splineAnimate.Duration - duration;
+                if (Set_middle_point == true)
                 {
-                    splineAnimate.ElapsedTime = splineAnimate.Duration - duration;
-                    if (Set_middle_point == true)
-                    {
-                        splineAnimate.ElapsedTime -= toroko_duration - (toroko_duration * middle_point_volume);
-                    }
+                    splineAnimate.ElapsedTime -= toroko_duration - (toroko_duration * middle_point_volume);
                 }
-            }));
-       
+            }
+        }));
+
 
 
         ///判定セット
@@ -94,8 +97,9 @@ public class spline_anime_manage : MonoBehaviour
         _eventHandler_toroko_obj.CollisionEnter += on_colli_en_toroko;
         _eventHandler_toroko_obj.CollisionExit += on_colli_exit_toroko;
 
-        //_eventHandler_landingplace = landingplace.RequestEventHandlers();
-        //_eventHandler_landingplace.TriggerEnter += On_tri_en_landingplace;
+        _eventHandler_middle_point = middle_point.RequestEventHandlers(); 
+        _eventHandler_middle_point.TriggerEnter += On_tri_en_landingplace;
+        _eventHandler_middle_point.TriggerExit += On_tri_exit_landingplace;
 
 
     }
@@ -106,38 +110,43 @@ public class spline_anime_manage : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift))
         {
 
-            //キャラのトロッコ落下を防ぐ措置
-            if(on_start_point_flag == true && splineAnimate.ElapsedTime < splineAnimate.Duration/12 + 0.1f)
+            //キャラのトロッコ落下を防ぐ措置 それを降りる
+            if (on_start_point_flag == true && splineAnimate.ElapsedTime < splineAnimate.Duration / 12 + 0.1f)
             {
                 player_trans.transform.position = toroko_obj.transform.position;
                 player_trans.transform.parent = toroko_obj.transform;
 
             }
-            if(on_end_point_flag == true && splineAnimate.ElapsedTime > splineAnimate.Duration - splineAnimate.Duration / 12)
+            if (on_end_point_flag == true && splineAnimate.ElapsedTime > splineAnimate.Duration - splineAnimate.Duration / 12)
             {
                 player_trans.transform.position = toroko_obj.transform.position;
                 player_trans.transform.parent = toroko_obj.transform;
             }
-            if(on_toroko_obj == true && splineAnimate.ElapsedTime < splineAnimate.Duration / 12 + 0.1f)
+            if (on_toroko_obj == true && splineAnimate.ElapsedTime < splineAnimate.Duration / 12 + 0.1f)
             {
                 player_trans.transform.position = start_point.transform.position;
                 player_trans.transform.parent = null;
             }
-            if(on_toroko_obj == true && splineAnimate.ElapsedTime > splineAnimate.Duration - splineAnimate.Duration / 12)
+            if (on_toroko_obj == true && splineAnimate.ElapsedTime > splineAnimate.Duration - splineAnimate.Duration / 12)
             {
                 player_trans.transform.position = end_point.transform.position;
+                player_trans.transform.parent = null;
+            }
+            if(Onmiddle_point == true)
+            {
+                player_trans.transform.position = landingplace_point.transform.position;
                 player_trans.transform.parent = null;
             }
 
         }
 
-        if(TIME_MANAGER.is_revtime == true)
+        if (TIME_MANAGER.is_revtime == true)
         {
             if (toroko_flow == Toroko_flow.rev)
             {
                 if (splineAnimate.Duration > splineAnimate.ElapsedTime + duration)
                 {
-                    if(Set_middle_point == false)
+                    if (Set_middle_point == false)
                     {
                         splineAnimate.ElapsedTime += Time.deltaTime;
                     }
@@ -145,7 +154,7 @@ public class spline_anime_manage : MonoBehaviour
                     {
                         splineAnimate.ElapsedTime += Time.deltaTime;
                     }
-                    
+
                 }
             }
             else
@@ -156,7 +165,7 @@ public class spline_anime_manage : MonoBehaviour
                     {
                         splineAnimate.ElapsedTime -= Time.deltaTime;
                     }
-                    else if (NoContactYetToroko == false )
+                    else if (NoContactYetToroko == false)
                     {
                         splineAnimate.ElapsedTime -= Time.deltaTime;
                     }
@@ -173,7 +182,7 @@ public class spline_anime_manage : MonoBehaviour
                     {
                         splineAnimate.ElapsedTime -= Time.deltaTime;
                     }
-                    else if (NoContactYetToroko == false )
+                    else if (NoContactYetToroko == false)
                     {
                         splineAnimate.ElapsedTime -= Time.deltaTime;
                     }
@@ -187,7 +196,7 @@ public class spline_anime_manage : MonoBehaviour
                     {
                         splineAnimate.ElapsedTime += Time.deltaTime;
                     }
-                    else if (NoContactYetToroko == false )
+                    else if (NoContactYetToroko == false)
                     {
                         splineAnimate.ElapsedTime += Time.deltaTime;
                     }
@@ -218,7 +227,7 @@ public class spline_anime_manage : MonoBehaviour
                 if (effect.isStopped)
                 {
                     effect.Play();
-                    
+
                 }
             }
             else if (on_start_point_flag == true)
@@ -226,7 +235,15 @@ public class spline_anime_manage : MonoBehaviour
                 if (effect.isStopped)
                 {
                     effect.Play();
-                    
+
+                }
+            }
+            else if (Onmiddle_point == true)
+            {
+                if (effect.isStopped)
+                {
+                    effect.Play();
+
                 }
             }
             else
@@ -234,7 +251,7 @@ public class spline_anime_manage : MonoBehaviour
                 if (effect.isPlaying == true)
                 {
                     effect.Stop();
-                    
+
                 }
             }
             yield return new WaitForSeconds(frequency);
@@ -261,7 +278,7 @@ public class spline_anime_manage : MonoBehaviour
             {
                 on_start_point_flag = false;
             }
-            
+
         }
     }
 
@@ -273,7 +290,7 @@ public class spline_anime_manage : MonoBehaviour
             player_trans = other.gameObject;
             //effect.Stop();
             //Debug.Log("false");
-            
+
         }
     }
 
@@ -293,7 +310,7 @@ public class spline_anime_manage : MonoBehaviour
             {
                 on_end_point_flag = false;
             }
-            
+
         }
     }
 
@@ -314,7 +331,7 @@ public class spline_anime_manage : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             on_toroko_obj = true;
-                
+
         }
     }
 
@@ -331,17 +348,25 @@ public class spline_anime_manage : MonoBehaviour
     private void On_tri_en_landingplace(Collider other)
     {
         //Debug.Log("true");
-        if (other.gameObject.tag== "Player")
+        if (other.gameObject.tag == "Player")
         {
-            NoContactYetToroko = false;
-            on_toroko_obj = true;
+            Onmiddle_point = true;
+            //NoContactYetToroko = false;
+            //on_toroko_obj = true;
 
-            player_trans = other.gameObject;
-            player_trans.transform.position = toroko_obj.transform.position;
-            player_trans.transform.parent = toroko_obj.transform;
-            Debug.Log("true");
+            //player_trans = other.gameObject;
+            //player_trans.transform.position = toroko_obj.transform.position;
+            //player_trans.transform.parent = toroko_obj.transform;
+            //Debug.Log("true");
         }
     }
 
+    private void On_tri_exit_landingplace(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            Onmiddle_point = false;
+        }
+    }
 
 }

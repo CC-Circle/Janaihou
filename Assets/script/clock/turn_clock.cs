@@ -35,15 +35,15 @@ public class turn_clock : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            this.transform.position = new Vector3(transform.position.x,transform.position.y+10,transform.position.z);
+            this.transform.position = new Vector3(transform.position.x,transform.position.y+30,transform.position.z);
 
             StartCoroutine(DelayCoroutine(time_manager.repop_item_get, () =>
             {
                 // n秒後にここの処理が実行される
-                if (this.gameObject.transform.position.y > 9 && this.gameObject.GetComponent<turn_clock>().enable_revial == true)
+                if (this.gameObject.transform.position.y > 25 && this.gameObject.GetComponent<turn_clock>().enable_revial == true)
                 {
                     //Debug.Log("called");
-                    this.gameObject.transform.position = new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y - 10, this.gameObject.transform.position.z);
+                    this.gameObject.transform.position = new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y - 30, this.gameObject.transform.position.z);
                 }
 
             }));
