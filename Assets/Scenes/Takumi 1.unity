@@ -22688,7 +22688,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2092673420069867708, guid: 06b6c790ccd664ce2bbb3164711b38b9, type: 3}
       propertyPath: max_clock
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2092673420069867708, guid: 06b6c790ccd664ce2bbb3164711b38b9, type: 3}
       propertyPath: fallSenser
