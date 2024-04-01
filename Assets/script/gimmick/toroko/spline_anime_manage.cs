@@ -16,8 +16,8 @@ public class spline_anime_manage : MonoBehaviour
     private IComponentEventHandler _eventHandler_end_point;
     [SerializeField] private GameObject toroko_obj;
     private IComponentEventHandler _eventHandler_toroko_obj;
-    [SerializeField] private GameObject landingplace;
-    private IComponentEventHandler _eventHandler_landingplace;
+    //[SerializeField] private GameObject landingplace;
+    //private IComponentEventHandler _eventHandler_landingplace;
     
 
     [SerializeField, Range(1.0f, 10.0f)]
@@ -94,8 +94,8 @@ public class spline_anime_manage : MonoBehaviour
         _eventHandler_toroko_obj.CollisionEnter += on_colli_en_toroko;
         _eventHandler_toroko_obj.CollisionExit += on_colli_exit_toroko;
 
-        _eventHandler_landingplace = landingplace.RequestEventHandlers();
-        _eventHandler_landingplace.TriggerEnter += On_tri_en_landingplace;
+        //_eventHandler_landingplace = landingplace.RequestEventHandlers();
+        //_eventHandler_landingplace.TriggerEnter += On_tri_en_landingplace;
 
 
     }
@@ -342,4 +342,6 @@ public class spline_anime_manage : MonoBehaviour
             Debug.Log("true");
         }
     }
+
+
 }
