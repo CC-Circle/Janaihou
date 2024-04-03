@@ -15612,8 +15612,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   times: 1
-  true_walter_speed_z: 250
-  false_walter_speed_z: -150
+  true_walter_speed_z: 150
+  false_walter_speed_z: -100
   direction: 0
 --- !u!65 &785740734
 BoxCollider:
@@ -20171,7 +20171,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   times: 1
   true_walter_speed_z: -150
-  false_walter_speed_z: 250
+  false_walter_speed_z: 100
   direction: 1
 --- !u!1 &1620087048
 GameObject:
