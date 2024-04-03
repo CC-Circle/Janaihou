@@ -10,6 +10,8 @@ jobs:
       # Unity プロジェクトの中身をダウンロードしてくる
       - name: Check out my unity project.
         uses: actions/checkout@v4
+        with:
+          lfs: true
 
       #Cache
       - name: Cache
