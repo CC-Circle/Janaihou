@@ -11,24 +11,52 @@ public class river : MonoBehaviour
     [SerializeField] private float true_walter_speed_z = 250;
     [SerializeField] private float false_walter_speed_z = -150;
 
+    public enum Directions
+    {
+        z,
+        x
+    }
+    public Directions direction = Directions.z;
+
     void OnTriggerStay(Collider col)
     {
         if (col.tag == "Player")
         {
-            if (TIME_MANAGER.is_revtime == false)
+            if (direction == Directions.z)
             {
-                
-                Rigidbody rb = col.transform.GetComponent<Rigidbody>();
-                rb.AddForce(0, 0, true_walter_speed_z);
-                //Debug.Log(col.name);
-                //Debug.Log(col.tag);
+                if (TIME_MANAGER.is_revtime == false)
+                {
+
+                    Rigidbody rb = col.transform.GetComponent<Rigidbody>();
+                    rb.AddForce(0, 0, true_walter_speed_z);
+                    //Debug.Log(col.name);
+                    //Debug.Log(col.tag);
+                }
+                else
+                {
+                    Rigidbody rb = col.transform.GetComponent<Rigidbody>();
+                    rb.AddForce(0, 0, false_walter_speed_z);
+                    //Debug.Log(col.name);
+                    //Debug.Log(col.tag);
+                }
             }
             else
             {
-                Rigidbody rb = col.transform.GetComponent<Rigidbody>();
-                rb.AddForce(0, 0, false_walter_speed_z);
-                //Debug.Log(col.name);
-                //Debug.Log(col.tag);
+                if (TIME_MANAGER.is_revtime == false)
+                {
+
+                    Rigidbody rb = col.transform.GetComponent<Rigidbody>();
+                    rb.AddForce(true_walter_speed_z, 0, 0);
+                    //Debug.Log(col.name);
+                    //Debug.Log(col.tag);
+                }
+                else
+                {
+                    Rigidbody rb = col.transform.GetComponent<Rigidbody>();
+                    rb.AddForce(false_walter_speed_z, 0, 0);
+                    //Debug.Log(col.name);
+                    //Debug.Log(col.tag);
+                }
             }
         }
 
