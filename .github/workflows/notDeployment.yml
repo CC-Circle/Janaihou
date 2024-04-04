@@ -1,4 +1,4 @@
-name: Run the WebGL build
+name: notDeployment
 on:
   workflow_dispatch: {}
 jobs:
