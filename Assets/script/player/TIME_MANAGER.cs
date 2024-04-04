@@ -35,7 +35,7 @@ public class TIME_MANAGER : MonoBehaviour
     {
         debug_slider.maxValue = 8;
         debug_slider.value = 8;
-        current_clock_value = max_clock - Time.time;
+        current_clock_value = max_clock;
     }
 
     // Update is called once per frame
