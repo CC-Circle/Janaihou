@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using DG.Tweening;
 
 public class Button_manage_ui : MonoBehaviour
 {
@@ -12,6 +13,11 @@ public class Button_manage_ui : MonoBehaviour
     public TextMeshProUGUI stage_indication;
     public List<Sprite> stage_preview_list;
     public Image stage_preview;
+
+    [SerializeField] Image transition_image;
+    [SerializeField] float Duration = 0.5f;
+    [SerializeField] float Start_Delay = 0.1f;
+    [SerializeField] float Scene_change_Delay = 2f;
 
     string buttonName;
 
@@ -50,30 +56,44 @@ public class Button_manage_ui : MonoBehaviour
 
     public void touch_start_button()
     {
-        
-        switch (buttonName)
-        {
-            case "1":
-                SceneManager.LoadScene("Takumi");
-                break;
-            case "2":
-                SceneManager.LoadScene("Takumi 1");
-                break;
-            case "3":
-                SceneManager.LoadScene("Takumi 2");
-                break;
-            case "4":
-                SceneManager.LoadScene("Takumi 3");
-                break;
-            case "5":
-                SceneManager.LoadScene("Takumi4");
-                break;
-            case "TUTORIAL":
-                SceneManager.LoadScene("Tutorial");
-                break;
+        var sequence = DOTween.Sequence();
+        DOVirtual.DelayedCall(
+            Start_Delay,   //
+            () => {
+                sequence.Append(transition_image.DOFillAmount(1, Duration));
+            }
+        );
 
-            default:
-                break;
-        }
+        DOVirtual.DelayedCall(
+            Scene_change_Delay,   //
+            () => {
+
+                switch (buttonName)
+                {
+                    case "1":
+                        SceneManager.LoadScene("Takumi");
+                        break;
+                    case "2":
+                        SceneManager.LoadScene("Takumi 1");
+                        break;
+                    case "3":
+                        SceneManager.LoadScene("Takumi 2");
+                        break;
+                    case "4":
+                        SceneManager.LoadScene("Takumi 3");
+                        break;
+                    case "5":
+                        SceneManager.LoadScene("Takumi4");
+                        break;
+                    case "TUTORIAL":
+                        SceneManager.LoadScene("Tutorial");
+                        break;
+
+                    default:
+                        break;
+                }
+            }
+        );
+        
     }
 }
