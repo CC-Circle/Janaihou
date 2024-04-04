@@ -1,11 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using DG.Tweening;
 
 public class Title_transition : MonoBehaviour
 {
+    [SerializeField] Image transition_image;
+    [SerializeField] float Duration = 0.5f;
+    [SerializeField] float Start_Delay = 0.1f;
+    [SerializeField] float Scene_change_Delay = 2f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +23,22 @@ public class Title_transition : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            SceneManager.LoadScene("Tutorial");
+           
+            var sequence = DOTween.Sequence();
+            DOVirtual.DelayedCall(
+                Start_Delay,   
+                () => {
+                    sequence.Append(transition_image.DOFillAmount(1, Duration));
+                }
+            );
+
+            DOVirtual.DelayedCall(
+                Scene_change_Delay,  
+                () => {
+
+                    SceneManager.LoadScene("Tutorial");
+                }
+            );
         }
     }
 }
