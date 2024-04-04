@@ -59907,6 +59907,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Audio_Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 5115790238056356557, guid: f57e95beeba8d4793af996247cd8f2d5, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6145347000124914795, guid: f57e95beeba8d4793af996247cd8f2d5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.5570636
@@ -59955,6 +59959,14 @@ PrefabInstance:
       propertyPath: clip2
       value: 
       objectReference: {fileID: 8300000, guid: 47e79a52049ca4165bf38b9caf4dc41b, type: 3}
+    - target: {fileID: 9006275083985856905, guid: f57e95beeba8d4793af996247cd8f2d5, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9006275083985856905, guid: f57e95beeba8d4793af996247cd8f2d5, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
