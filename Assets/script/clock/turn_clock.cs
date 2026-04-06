@@ -53,6 +53,7 @@ public class turn_clock : MonoBehaviour
                 
                 time_manager.debug_slider.value = time_manager.debug_slider.value + recover_value;
                 time_manager.current_clock_value = time_manager.max_clock / 8 * (time_manager.debug_slider.value);
+                Debug.Log("curVal" + time_manager.current_clock_value);
                 Instantiate(effect,other.gameObject.transform.position,Quaternion.identity);
                 effect_ui.GetComponent<ParticleSystem>().Play();
                 

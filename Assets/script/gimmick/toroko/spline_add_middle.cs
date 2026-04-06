@@ -107,7 +107,7 @@ public class spline_add_middle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift))
+        if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift)|| Input.GetButtonDown("Fire3"))
         {
 
             //キャラのトロッコ落下を防ぐ措置 それを降りる

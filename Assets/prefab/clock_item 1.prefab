@@ -153,4 +153,4 @@ MonoBehaviour:
   effect: {fileID: 2309592012994093994, guid: 63949e9e5a9224aadbb71782620cb772, type: 3}
   effect_ui: {fileID: 0}
   Enable_show_all_palam: 0
-  recover_value: 1
+  recover_value: 4

@@ -31,8 +31,13 @@ public class TIME_MANAGER : MonoBehaviour
     bool is_respone_flag = false;
 
     // Start is called before the first frame update
+    private void Awake()
+    {
+        is_revtime = false;
+    }
     void Start()
     {
+
         debug_slider.maxValue = 8;
         debug_slider.value = 8;
         current_clock_value = max_clock;
@@ -42,7 +47,7 @@ public class TIME_MANAGER : MonoBehaviour
     void Update()
     {
         //public_slider_value = debug_slider.value;
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("Fire2"))
         {
             if (is_revtime==false && debug_slider.value > 0.1 )
             {
@@ -103,24 +108,14 @@ public class TIME_MANAGER : MonoBehaviour
             debug_slider.value = 1;
 
         }
-        else if (is_respone_flag == false)//ゲージが０になるとき呼ばれる
+        else //ゲージが０になるとき呼ばれる
         {
-            
-            is_respone_flag = true;
-            StartCoroutine(DelayCoroutine(after_nogage_respone, () =>
-            {
-                is_respone_flag = false;
-                // n秒後にここの処理が実行される
-                if (current_clock_value < max_clock / 8)
-                {
-                    fallSenser.nogage_respone();
-                    fallSenser.revival_clock();
-                }
-            }));
-        }else if(is_respone_flag == true)
-        {
-            debug_slider.value = 0.01f;
+            debug_slider.value = 0;
         }
+        //else if(is_respone_flag == true)
+        //{
+        //    debug_slider.value = 0.01f;
+        //}
 
 
     }

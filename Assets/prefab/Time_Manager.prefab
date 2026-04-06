@@ -48,7 +48,7 @@ MonoBehaviour:
   fallSenser: {fileID: 0}
   debug_slider: {fileID: 0}
   max_clock: 10
-  respone_clock_value: 4
+  respone_clock_value: 8
   current_clock_value: 0
   repop_item_get: 1
   Force_change: 1
